@@ -1,8 +1,6 @@
 version: '2'
 services:
   node:
-    build: 
-      context: .
-      dockerfile: server/Dockerfile
+    build: .
     ports:
       - "80:80"
