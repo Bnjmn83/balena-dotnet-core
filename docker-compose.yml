@@ -2,3 +2,5 @@ version: '2'
 services:
   node:
     build: .
+  ports:
+    - "80:80"
