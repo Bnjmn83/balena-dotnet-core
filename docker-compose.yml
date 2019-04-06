@@ -5,7 +5,7 @@ services:
     image: simdev
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: .
       args:
         USERNAME: asd
         SECRET: asd
