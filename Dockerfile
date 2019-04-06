@@ -1,27 +1,22 @@
-FROM microsoft/dotnet:2.1-runtime AS base
+FROM microsoft/dotnet:2.2-runtime AS base
 WORKDIR /app
 
-FROM microsoft/dotnet:2.1-sdk AS build
+FROM microsoft/dotnet:2.2-sdk AS build
 
 WORKDIR /src
-COPY ABUS.DeviceConnectivity.SimulatedDevice/ABUS.DeviceConnectivity.SimulatedDevice.csproj ABUS.DeviceConnectivity.SimulatedDevice/
-COPY ABUS.DeviceConnectivity.Messages/ABUS.DeviceConnectivity.Messages.csproj ABUS.DeviceConnectivity.Messages/
+COPY ConsoleApp3.csproj .
+COPY Program.cs .
 
-COPY NuGet.Config.Docker NuGet.Config
-RUN  sed -i "s/SECRET/n5qbfytwsnq3ccfnhagei7ybeyb725rubkca4u2ccbtox3rz5lhq/g" NuGet.Config &&\
-sed -i "s/USERNAME/christian.gottinger@live.com/g" NuGet.Config
-RUN dotnet restore ABUS.DeviceConnectivity.SimulatedDevice/ABUS.DeviceConnectivity.SimulatedDevice.csproj
+RUN dotnet restore ConsoleApp3.csproj
 COPY . .
-WORKDIR /src/ABUS.DeviceConnectivity.SimulatedDevice
-RUN dotnet build ABUS.DeviceConnectivity.SimulatedDevice.csproj -c Release -o /app
-
+RUN dotnet build ConsoleApp3.csproj -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish ABUS.DeviceConnectivity.SimulatedDevice.csproj -c Release -o /app
+RUN dotnet publish ConsoleApp3.csproj -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 
 
-ENTRYPOINT ["dotnet", "ABUS.DeviceConnectivity.SimulatedDevice.dll"]
+ENTRYPOINT ["dotnet", "ConsoleApp3.dll"]
