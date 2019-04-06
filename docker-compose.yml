@@ -4,4 +4,4 @@ services:
   simulateddevice:
     image: simdev
     build:
-      dockerfile: .
+      context: .
