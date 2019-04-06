@@ -3,4 +3,4 @@ version: '2'
 services:
   simulateddevice:
     image: simdev
-    build: .
+    build: Dockerfile
