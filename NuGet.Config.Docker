@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" protocolVersion="3" />
+    <add key="ABUS" value="https://cp2018.pkgs.visualstudio.com/_packaging/ABUS/nuget/v3/index.json" />
+  </packageSources>
+  <packageRestore>
+    <add key="enabled" value="True" />
+    <add key="automatic" value="False" />
+  </packageRestore>
+  <bindingRedirects>
+    <add key="skip" value="True" />
+  </bindingRedirects>
+  <packageManagement>
+    <add key="format" value="0" />
+    <add key="disabled" value="False" />
+  </packageManagement>
+  <disabledPackageSources>
+    <add key="MyGet" value="true" />
+  </disabledPackageSources>
+  <packageSourceCredentials>
+    <ABUS>
+      <add key="Username" value="USERNAME" />
+      <add key="ClearTextPassword" value="SECRET" />
+    </ABUS>
+  </packageSourceCredentials>
+</configuration>

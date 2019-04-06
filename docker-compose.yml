@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  simulateddevice:
+    image: simdev
+    build:
+      context: .
+      dockerfile: ABUS.DeviceConnectivity.SimulatedDevice/Dockerfile
+      args:
+        USERNAME: asd
+        SECRET: asd
