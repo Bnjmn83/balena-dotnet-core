@@ -3,4 +3,9 @@ version: '2'
 services:
   simulateddevice:
     image: simdev
-    build: Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USERNAME: asd
+        SECRET: asd
